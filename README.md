@@ -8,7 +8,7 @@ Install
 
 Create log dir
 
-  mkdir log
+`mkdir log`
   
 Run migrations
 
