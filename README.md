@@ -29,33 +29,43 @@ Supported Commands
 ---
 
 Change room topic
-  /topic foo topic
+
+    /topic foo topic
   
 Search google (5 results)
-  /search foo search query
+
+    /search foo search query
   
 Set yourself away
-  /away
-  /away foo status message
+
+    /away
+    /away foo status message
   
 Set yourself back
-  /back
-  /back foo status message
+
+    /back
+    /back foo status message
   
 View all user statuses
-  /status
+
+    /status
   
 Set your status message without changing active/away status
-  /status foo status message
+
+    /status foo status message
   
 Get details and stats on a specific user
-  /finger foo user
+
+    /finger foo user
   
 Tell a random joke
-  /joke
+
+    /joke
   
 Random Chuck Norris fact
-  /chuck
+
+    /chuck
   
 Slap a user (or anything)
-  /slap foo
+
+    /slap foo
