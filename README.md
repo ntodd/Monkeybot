@@ -8,22 +8,22 @@ Install
 
 Create log dir
 
-`mkdir log`
+    mkdir log
   
 Run migrations
 
-  rake migrate
+    rake migrate
   
 Create login details
 
-  touch config/private_details.rb
+    touch config/private_details.rb
   
 Add your info
 
-  ACCOUNT = "xxx"
-  LOGIN = "xxx"
-  PASSWORD = "xxx"
-  ROOM = "xxx"
+    ACCOUNT = "xxx"
+    LOGIN = "xxx"
+    PASSWORD = "xxx"
+    ROOM = "xxx"
 
 Supported Commands
 ---
