@@ -3,6 +3,8 @@ require 'tinder'
 require 'scrubyt'
 require 'activerecord'
 require 'config/private_details'
+require 'config/environment'
+require 'firewatir'
 
 # Find environment
 # This is rather hacky since it isn't needed by tinder, but by the rake tasks.  Probably could strip it.
