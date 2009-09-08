@@ -2,11 +2,11 @@ require 'rubygems'
 require 'tinder'
 require 'scrubyt'
 require 'activerecord'
-require 'config/private_details'
+require File.join(File.dirname(__FILE__), 'config', 'private_details' )
 
 # Find environment
-# This is rather hacky since it isn't needed by tinder, but by the rake tasks.  Probably could strip it.
-RACK_ENV = ENV['RACK_ENV'] || 'development' unless defined? RACK_ENV
+# This is rather hacky since it isn't needed by tinder, but by the rake tasks and db config.  Probably could strip it.
+RACK_ENV = 'production'
 
 MESSAGE_EXCEPTIONS = [ "Monkeybot", "Toddbot", "Ad", "" ]
 

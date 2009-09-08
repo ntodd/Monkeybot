@@ -1,4 +1,4 @@
-require 'init'
+require File.join(File.dirname(__FILE__), 'init' )
 
 campfire = Tinder::Campfire.new ACCOUNT
 campfire.login LOGIN, PASSWORD
