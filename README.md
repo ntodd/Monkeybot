@@ -3,14 +3,14 @@ Monkeybot
 
 Monkeybot is a campfire bot to handle status tracking and misc tasks for the Fort Wayne Screaming Monkey's Guild.
 
+The system is currently an organic hodgepodge and probably shouldn't be used anywhere without some TLC.
+
 Install
 ---
 
 Add gems used by Monkeybot (in addition to Rubygems / Rails)
 
-    sudo gem install scrubyt  
-    sudo gem install tinder
-    sudo gem install firewatir
+    sudo gem install scrubyt tinder firewatir daemons
 
 Create log dir
 
@@ -20,33 +20,35 @@ Run migrations
 
     rake migrate
 
+Set up your own environment in init.rb
+    
+    # Use this env for your database config
+    RACK_ENV = 'my_env'
+
 Copy database example file for your use
 
     cp config/database.example.yml config/database.yml
-
-Configure your databases in database.yml
-
-    development:
-      adapter: sqlite3
-      database: db/development.sqlite3
-      pool: 5
-      timeout: 5000
-    ....
 
 Copy login details file for your use
 
     copy config/private_details.example.yml to config/private_details.rb
 
-Add your info to private_details.yml
+Add your info to config/private_details.rb
 
     ACCOUNT  = "subdomain"
     LOGIN    = "email"
     PASSWORD = "password"
     ROOM     = "room name"
-
+    
 Start the bot
 
     ruby bot.rb
+
+Start/stop/restart the bot as a daemon (useful for "production" mode)
+
+    ruby bot_runner.rb start
+    ruby bot_runner.rb stop
+    ruby bot_runner.rb restart
 
 Supported Commands
 ---
