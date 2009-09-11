@@ -183,11 +183,30 @@ room.listen do |message|
     zip = $1
     if (zip =~ /^\d{5}([\-]\d{4})?$/)
       client = YahooWeather::Client.new
-      response = client.lookup_location(zip)
-      room.speak "#{response.title} #{response.condition.temp} degrees #{response.condition.text}"  
+      begin
+        response = client.lookup_location(zip)
+        room.speak "#{response.title} #{response.condition.temp} degrees #{response.condition.text}"  
+      rescue
+        room.speak "Yahoo doesn't think this a valid zip"
+      end
     else
       room.speak "Sorry, I only know 5 digit zip codes at this point"
     end
   end
+  
+  # ==========
+  # = /random 8 =
+  # ==========
+  if message[:message] =~ /^\/random\s(.+)?/
+    chars = $1
+    if (chars =~ /\d/)
+      srand
+      seed = "--#{rand(10000)}--#{Time.now}--"
+      room.speak Digest::SHA1.hexdigest(seed)[0,chars.to_i]
+    else
+      room.speak "Sorry, I can only generate a kick-ass random string if you pass me a valid length"
+    end
+  end
+  
     
 end
