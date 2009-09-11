@@ -175,5 +175,19 @@ room.listen do |message|
       room.speak "Sorry, I don't know about #{$1}"
     end
   end
+  
+  # ==========
+  # = /weather 46845 =
+  # ==========
+  if message[:message] =~ /^\/weather\s(.+)?/
+    zip = $1
+    if (zip =~ /^\d{5}([\-]\d{4})?$/)
+      client = YahooWeather::Client.new
+      response = client.lookup_location(zip)
+      room.speak "#{response.title} #{response.condition.temp} degrees #{response.condition.text}"  
+    else
+      room.speak "Sorry, I only know 5 digit zip codes at this point"
+    end
+  end
     
 end
