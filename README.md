@@ -94,3 +94,10 @@ Random Chuck Norris fact
 Slap a user (or anything)
 
     /slap foo
+    
+  
+To do list
+===
+
+* Email log of day's messages
+* Could email some outputs instead of dump to chat
