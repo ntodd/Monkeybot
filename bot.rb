@@ -4,6 +4,7 @@ campfire = Tinder::Campfire.new ACCOUNT
 campfire.login LOGIN, PASSWORD
 room = campfire.find_room_by_name ROOM
 
+# Ouch.  Use built-in AR methods...
 def fetch_or_create_user(name)
   if User.exists?(:name => name)
     user = User.find_by_name(name)
@@ -188,9 +189,9 @@ room.listen do |message|
     end
   end
   
-  # ==========
+  # ==================
   # = /weather 46845 =
-  # ==========
+  # ==================
   if message[:message] =~ /^\/weather\s(.+)?/
     zip = $1
     if (zip =~ /^\d{5}([\-]\d{4})?$/)
@@ -206,9 +207,9 @@ room.listen do |message|
     end
   end
   
-  # ==========
+  # =============
   # = /random 8 =
-  # ==========
+  # =============
   if message[:message] =~ /^\/random\s(.+)?/
     chars = $1
     if (chars =~ /\d/)
@@ -220,40 +221,37 @@ room.listen do |message|
     end
   end
   
-  # ==========
-  # = /bitchslap whoever =
-  # ==========
-  if message[:message] =~ /^\/bitchslap\s(.+)?/
+  # ==================
+  # = /bitchslap foo =
+  # ==================
+  if message[:message] =~ /^\/bitchslap/
     room.speak "#{message[:person]} has f$%@^@! bitch slapped Tim Novinger" 
   end
   
+  # =====================
+  # = General Listeners =
+  # =====================  
   
-  
-  # ==========
-  # = general listeners
-  # ==========
-  
-  
-  # ==========
-  # = *mom =
-  # ==========
-  if message[:message] =~ /\smom\s(.+)?/
+  # =============
+  # = "* mom *" =
+  # =============
+  if message[:message] =~ /\smom\s/
     room.speak "Hey now, no reason to drag someone's mom into this." 
   end
   
-  # ==========
+  # =========
   # = *CITY =
-  # ==========
+  # =========
   CITY = "Fort Wayne"
   if message[:message].match(CITY)
     room.speak "#{CITY} FTW!" 
   end
-    
-  # ==========
-  # = gem =
-  # ==========
-  if message[:message] =~ /gem?/i
-    room.speak "Oooooh shiny!!!          #Monkeybot_has_ADD"
+      
+  # =============
+  # = "* gem *" =
+  # =============
+  if message[:message] =~ /\sgem\s/
+    room.speak "Oooooh shiny!!!"
   end
   
 end
