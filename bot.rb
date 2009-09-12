@@ -158,6 +158,18 @@ room.listen do |message|
     room.speak results[0][:joke_text]
   end
   
+  # ==========
+  # = /mrt =
+  # ==========
+  if message[:message] == "/mrt"    
+    joke = Scrubyt::Extractor.define do
+      fetch "http://4q.cc/index.php?pid=fact&person=mrt"
+      joke_text "//div[@id='factbox']"
+    end
+    results = joke.to_hash
+    room.speak results[0][:joke_text]
+  end
+  
   # ====================
   # = /finger Nate T. =
   # ====================
@@ -175,5 +187,51 @@ room.listen do |message|
       room.speak "Sorry, I don't know about #{$1}"
     end
   end
+  
+  # ==========
+  # = /weather 46845 =
+  # ==========
+  if message[:message] =~ /^\/weather\s(.+)?/
+    zip = $1
+    if (zip =~ /^\d{5}([\-]\d{4})?$/)
+      client = YahooWeather::Client.new
+      begin
+        response = client.lookup_location(zip)
+        room.speak "#{response.title} #{response.condition.temp} degrees #{response.condition.text}"  
+      rescue
+        room.speak "Yahoo doesn't think this a valid zip"
+      end
+    else
+      room.speak "Sorry, I only know 5 digit zip codes at this point"
+    end
+  end
+  
+  # ==========
+  # = /random 8 =
+  # ==========
+  if message[:message] =~ /^\/random\s(.+)?/
+    chars = $1
+    if (chars =~ /\d/)
+      srand
+      seed = "--#{rand(10000)}--#{Time.now}--"
+      room.speak Digest::SHA1.hexdigest(seed)[0,chars.to_i]
+    else
+      room.speak "Sorry, I can only generate a kick-ass random string if you pass me a valid length"
+    end
+  end
+  
+  # ==========
+  # = /bitchslap whoever =
+  # ==========
+  if message[:message] =~ /^\/bitchslap\s(.+)?/
+    room.speak "#{message[:person]} has f$%@^@! bitch slapped Tim Novinger" 
+  end
     
+  # ==========
+  # = gem =
+  # ==========
+  if message[:message] =~ /gem?/i
+    room.speak "Oooooh shiny!!!          #Monkeybot_has_ADD"
+  end
+  
 end

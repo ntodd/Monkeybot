@@ -2,6 +2,8 @@ require 'rubygems'
 require 'tinder'
 require 'scrubyt'
 require 'activerecord'
+require 'yahoo-weather'
+require 'sha1'
 require File.join(File.dirname(__FILE__), 'config', 'environment' )
 require File.join(File.dirname(__FILE__), 'config', 'private_details' )
 
