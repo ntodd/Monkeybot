@@ -230,29 +230,13 @@ room.listen do |message|
   
   # =====================
   # = General Listeners =
-  # =====================  
-  
-  # =============
-  # = "* mom *" =
-  # =============
-  if message[:message] =~ /\smom\s/i
-    room.speak "Hey now, no reason to drag someone's mom into this." 
+  # =====================
+  Listener.all.each do |handler|
+    if message[:message] =~ handler[0]
+      room.speak handler[1]
+    end
   end
-  
-  # ====================
-  # = "* fort wayne *" =
-  # ====================
-  if message[:message] =~ /\sFort Wayne\s/i
-    room.speak "Fort Wayne FTW!" 
-  end
-      
-  # =============
-  # = "* gem *" =
-  # =============
-  if message[:message] =~ /\sgem\s/i
-    room.speak "Oooooh shiny!!!"
-  end
-  
+    
   # ================
   # = *COLD FUSION =
   # ================

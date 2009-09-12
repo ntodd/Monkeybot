@@ -1,9 +1,4 @@
-require 'rubygems'
-require 'tinder'
-require 'scrubyt'
-require 'activerecord'
-require 'yahoo-weather'
-require 'sha1'
+%w( rubygems tinder scrubyt activerecord yahoo-weather sha1 ).each {|lib| require lib }
 require File.join(File.dirname(__FILE__), 'config', 'environment' )
 require File.join(File.dirname(__FILE__), 'config', 'private_details' )
 
