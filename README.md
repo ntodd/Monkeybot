@@ -90,6 +90,10 @@ Tell a random joke
 Random Chuck Norris fact
 
     /chuck
+
+Random Mr. T fact
+
+    /mrt
   
 Slap a user (or anything)
 
