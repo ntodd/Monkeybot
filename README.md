@@ -94,3 +94,11 @@ Random Chuck Norris fact
 Slap a user (or anything)
 
     /slap foo
+
+Generate random strings (up to 40 chars)
+
+    /random 8
+
+Get weather report for a zipcode
+
+    /weather 46845
