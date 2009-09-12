@@ -211,7 +211,6 @@ room.listen do |message|
   # ==========
   # = /bitchslap whoever =
   # ==========
-  message[:message] = "/bitchslap foo"
   if message[:message] =~ /^\/bitchslap\s(.+)?/
     room.speak "#{message[:person]} has f$%@^@! bitch slapped Tim Novinger" 
   end
