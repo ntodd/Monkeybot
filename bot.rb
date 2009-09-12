@@ -214,5 +214,27 @@ room.listen do |message|
   if message[:message] =~ /^\/bitchslap\s(.+)?/
     room.speak "#{message[:person]} has f$%@^@! bitch slapped Tim Novinger" 
   end
+  
+  
+  
+  # ==========
+  # = general listeners
+  # ==========
+  
+  
+  # ==========
+  # = *mom =
+  # ==========
+  if message[:message] =~ /\smom\s(.+)?/
+    room.speak "Hey now, no reason to drag someone's mom into this." 
+  end
+  
+  # ==========
+  # = *CITY =
+  # ==========
+  CITY = "Fort Wayne"
+  if message[:message].match(CITY)
+    room.speak "#{CITY} FTW!" 
+  end
     
 end
