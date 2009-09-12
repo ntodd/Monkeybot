@@ -265,8 +265,7 @@ room.listen do |message|
   insults += ["amateur", "worse than chapped lips when skiing", "relatively enjoyable compared to a vascetomy"]
   TECHNOLOGIES.each do |t|
     if message[:message].downcase.match(t.downcase)
-      puts "#{t} is " + insults[rand(insults.size)].to_s
-      #room.speak "#{t} is " + insults[rand(insults.size)].to_s
+      room.speak "#{t} is " + insults[rand(insults.size)].to_s
     end
   end
   
