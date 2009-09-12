@@ -94,6 +94,10 @@ Random Chuck Norris fact
 Slap a user (or anything)
 
     /slap foo
+    
+Bitchslap Tim Novinger regardless of target user
+	
+	/bitchslap foo
 
 Generate random strings (up to 40 chars)
 
