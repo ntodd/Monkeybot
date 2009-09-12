@@ -228,6 +228,13 @@ room.listen do |message|
     room.speak "#{message[:person]} has f$%@^@! bitch slapped Tim Novinger" 
   end
   
+  # ==================
+  # = /shutup foo =
+  # ==================
+  if message[:message] =~ /^\/shutup(\s(.+))?/
+    room.speak "OH SNAP #{$2}! You just got BOOM ROASTED."
+  end
+  
   # =====================
   # = General Listeners =
   # =====================

@@ -102,6 +102,10 @@ Slap a user (or anything)
 Bitchslap Tim Novinger regardless of target user
 
     /bitchslap foo
+    
+Respond to someone telling someone else to shut up
+    
+    /shutup foo
 
 Generate random strings (up to 40 chars)
 
