@@ -110,3 +110,8 @@ Generate random strings (up to 40 chars)
 Get weather report for a zipcode
 
     /weather 46845
+    
+Comment whenever someone mentions the word "GEM"
+[case-insensitive]
+
+	/speaks the phrase "Oooooh shiny!!!          #Monkeybot_has_ADD"

@@ -227,4 +227,11 @@ room.listen do |message|
     room.speak "#{message[:person]} has f$%@^@! bitch slapped Tim Novinger" 
   end
     
+  # ==========
+  # = gem =
+  # ==========
+  if message[:message] =~ /gem?/i
+    room.speak "Oooooh shiny!!!          #Monkeybot_has_ADD"
+  end
+  
 end
