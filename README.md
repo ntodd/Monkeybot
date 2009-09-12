@@ -111,11 +111,24 @@ Get weather report for a zipcode
 
     /weather 46845
 
+General Listeners
+---
+
 Comment whenever someone mentions the word "GEM"
 [case-insensitive]
 
-    /speaks the phrase "Oooooh shiny!!!          #Monkeybot_has_ADD"
+    /speaks the phrase "Oooooh shiny!!!"
 
+Comment whenever someone mentions the word "FORT WAYNE"
+[case-insensitive]
+
+    /speaks the phrase "Fort Wayne FTW!"
+    
+Comment whenever someone mentions the word "MOM"
+[case-insensitive]
+
+    /speaks the phrase "Hey now, no reason to drag someone's mom into this."
+    
 To do list
 ===
 
