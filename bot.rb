@@ -219,7 +219,7 @@ room.listen do |message|
     else
       room.speak "Sorry, I can only generate a kick-ass random string if you pass me a valid length"
     end
-  end
+  end  
   
   # ==================
   # = /bitchslap foo =
@@ -239,12 +239,11 @@ room.listen do |message|
     room.speak "Hey now, no reason to drag someone's mom into this." 
   end
   
-  # =========
-  # = *CITY =
-  # =========
-  CITY = "Fort Wayne"
-  if message[:message].match(CITY)
-    room.speak "#{CITY} FTW!" 
+  # ====================
+  # = "* fort wayne *" =
+  # ====================
+  if message[:message] =~ /\sFort Wayne\s/i
+    room.speak "Fort Wayne FTW!" 
   end
       
   # =============
@@ -262,7 +261,8 @@ room.listen do |message|
   insults += ["FTS!", "needing not be mentioned anymore"]
   insults += ["..., wait, someone still uses that?", "in my mind stuck in the bucket with COBOL and FORTRAN"]
   insults += ["on it's death bed", "showing it's age", "dead to me"]
-  insults += ["amateur", "worse than chapped lips when skiing", "relatively enjoyable compared to a vascetomy"]
+  insults += ["amateur", "worse than chapped lips when skiing", "relatively enjoyable compared to a vasectomy"]
+  
   TECHNOLOGIES.each do |t|
     if message[:message].downcase.match(t.downcase)
       room.speak "#{t} is " + insults[rand(insults.size)].to_s
