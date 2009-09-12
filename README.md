@@ -90,10 +90,18 @@ Tell a random joke
 Random Chuck Norris fact
 
     /chuck
+
+Random Mr. T fact
+
+    /mrt
   
 Slap a user (or anything)
 
     /slap foo
+    
+Bitchslap Tim Novinger regardless of target user
+
+    /bitchslap foo
 
 Generate random strings (up to 40 chars)
 
@@ -102,3 +110,14 @@ Generate random strings (up to 40 chars)
 Get weather report for a zipcode
 
     /weather 46845
+
+Comment whenever someone mentions the word "GEM"
+[case-insensitive]
+
+    /speaks the phrase "Oooooh shiny!!!          #Monkeybot_has_ADD"
+
+To do list
+===
+
+* Email log of day's messages
+* Could email some outputs instead of dump to chat

@@ -158,6 +158,18 @@ room.listen do |message|
     room.speak results[0][:joke_text]
   end
   
+  # ==========
+  # = /mrt =
+  # ==========
+  if message[:message] == "/mrt"    
+    joke = Scrubyt::Extractor.define do
+      fetch "http://4q.cc/index.php?pid=fact&person=mrt"
+      joke_text "//div[@id='factbox']"
+    end
+    results = joke.to_hash
+    room.speak results[0][:joke_text]
+  end
+  
   # ====================
   # = /finger Nate T. =
   # ====================
@@ -237,4 +249,11 @@ room.listen do |message|
     room.speak "#{CITY} FTW!" 
   end
     
+  # ==========
+  # = gem =
+  # ==========
+  if message[:message] =~ /gem?/i
+    room.speak "Oooooh shiny!!!          #Monkeybot_has_ADD"
+  end
+  
 end
