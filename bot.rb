@@ -235,7 +235,7 @@ room.listen do |message|
   # =============
   # = "* mom *" =
   # =============
-  if message[:message] =~ /\smom\s/
+  if message[:message] =~ /\smom\s/i
     room.speak "Hey now, no reason to drag someone's mom into this." 
   end
   
@@ -250,7 +250,7 @@ room.listen do |message|
   # =============
   # = "* gem *" =
   # =============
-  if message[:message] =~ /\sgem\s/
+  if message[:message] =~ /\sgem\s/i
     room.speak "Oooooh shiny!!!"
   end
   
