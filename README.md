@@ -70,6 +70,10 @@ Set yourself back
 
     /back
     /back foo status message
+    
+Turn listen responder on/off
+	
+	/earmuffs on/off
   
 View all user statuses
 
