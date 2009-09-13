@@ -131,7 +131,7 @@ room.listen do |message|
   # ====================
   # = /earmuffs on|off =
   # ====================
-  if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/
+  if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/ and message[:person] != "Dutch Rapley"
     Admin.listeners_active = $1 == "off"
     room.speak "Earmuffs are now #{$1}"
   end

@@ -72,6 +72,7 @@ Set yourself back
     /back foo status message
     
 Turn listen responder on/off
+(unless you're Dutch)
 	
 	/earmuffs on/off
   
