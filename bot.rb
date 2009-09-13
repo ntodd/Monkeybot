@@ -246,26 +246,30 @@ room.listen do |message|
   # =====================
   # = General Listeners =
   # =====================
-  Listener.all.each do |handler|
-    if message[:message] =~ Regexp.new(handler[0])
-      room.speak handler[1]
-    end
-  end if Admin.listeners_active
+  if Admin.listeners_active # Controlled with /earmuffs command
     
-  # ================
-  # = *COLD FUSION =
-  # ================
-  technologies = ["cold fusion", "coldfusion", "CF"]
-  insults = ["antiquated", "lame", "needing Chuck Norris to deal the death blow"]
-  insults += ["FTS!", "needing not be mentioned anymore"]
-  insults += ["..., wait, someone still uses that?", "in my mind stuck in the bucket with COBOL and FORTRAN"]
-  insults += ["on it's death bed", "showing it's age", "dead to me"]
-  insults += ["amateur", "worse than chapped lips when skiing", "relatively enjoyable compared to a vasectomy"]
-  
-  technologies.each do |t|
-    if message[:message].downcase.match(t.downcase)
-      room.speak "#{t} is " + insults[rand(insults.size)].to_s
+    Listener.all.each do |handler|
+      if message[:message] =~ Regexp.new(handler[0])
+        room.speak handler[1]
+      end
     end
+    
+    # ================
+    # = *COLD FUSION =
+    # ================
+    technologies = ["cold fusion", "coldfusion", "CF"]
+    insults = ["antiquated", "lame", "needing Chuck Norris to deal the death blow"]
+    insults += ["FTS!", "needing not be mentioned anymore"]
+    insults += ["..., wait, someone still uses that?", "in my mind stuck in the bucket with COBOL and FORTRAN"]
+    insults += ["on it's death bed", "showing it's age", "dead to me"]
+    insults += ["amateur", "worse than chapped lips when skiing", "relatively enjoyable compared to a vasectomy"]
+  
+    technologies.each do |t|
+      if message[:message].downcase.match(t.downcase)
+        room.speak "#{t} is " + insults[rand(insults.size)].to_s
+      end
+    end
+
   end
   
 end
