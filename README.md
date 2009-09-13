@@ -75,6 +75,10 @@ Turn listen responder on/off
 (unless you're Dutch)
 	
 	/earmuffs on/off
+	
+Return current status of Earmuffs
+
+	/earmuffs status
   
 View all user statuses
 
