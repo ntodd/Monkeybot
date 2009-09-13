@@ -129,17 +129,11 @@ room.listen do |message|
   end
   
   # ====================
-  # = /earmuffs on/off =
+  # = /earmuffs on|off =
   # ====================
-  if message[:message] =~ /^\/earmuffs(\s(.+))?/
-  	toggle = $2
-  	if $2 =~ /^on?/i
-  		listen = false
-	  	room.speak "I'm not listening, la la la la la..."
-	else if $2 =~ /^off?/i
-		listen = true
-	  	room.speak "Listening to your problems for $100/hr. PayPal accepted."
-	end
+  if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/
+    Admin.listeners_active = $1 == "off"
+    room.speak "Earmuffs are now #{$1}"
   end
   
   # =========
@@ -252,13 +246,11 @@ room.listen do |message|
   # =====================
   # = General Listeners =
   # =====================
-  if listen == true
-	  Listener.all.each do |handler|
-	    if message[:message] =~ Regexp.new(handler[0])
-	      room.speak handler[1]
-	    end
-	  end
-  end
+  Listener.all.each do |handler|
+    if message[:message] =~ Regexp.new(handler[0])
+      room.speak handler[1]
+    end
+  end if Admin.listeners_active
     
   # ================
   # = *COLD FUSION =
