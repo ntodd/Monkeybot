@@ -140,7 +140,7 @@ room.listen do |message|
   # = /earmuffs =
   # =============
   if message[:message] =~ /^\/earmuffs$/
-    room.speak "Earmuffs are currently #{Admin.listeners_active ? "on" : "off"}"
+    room.speak "Earmuffs are currently #{Admin.listeners_active ? "off" : "on"}"
   end
   
   # =========
