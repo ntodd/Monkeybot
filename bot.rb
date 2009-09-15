@@ -121,17 +121,7 @@ room.listen do |message|
   # = /back message =
   # =================
   if message[:message] =~ /^\/back(\s(.+))?/
-    user.status = "active"
-    user.status_message = $2 ? $2 : ""
-    if user.save
-      if $2
-        room.speak message[:person] + " is now back: #{$2}"
-      else
-        room.speak message[:person] + " is now back"
-      end
-    else
-      room.speak "Oops, problem."
-    end
+    room.speak "This command has been deprecated in favor of automatic status updating.  To set your active status, use /status command."
   end
   
   # ====================
