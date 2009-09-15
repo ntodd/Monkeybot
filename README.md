@@ -147,3 +147,19 @@ To do list
 
 * Email log of day's messages
 * Could email some outputs instead of dump to chat
+* Use away messages (Cucumber feature below...or at least my "hack" at it)
+
+    Feature: Away message repeating
+      In order to not get Hulk angry when someone doesn't respond right away
+      As a chat user
+      I want monkeybot to repeat someone's away message when I DM them
+    
+      Scenario: Messaging a user who is away
+        Given a user "Tim Harvey:" who is "/away At a meeting"
+        When I send a message "Tim Harvey: Want to do lunch?"
+        Then monkeybot will respond "Tim Harvey is away: At a meeting"
+      
+      Scenario: Messaging a user who is back
+        Given a user "Tim Harvey:" who is "/back Chatting with Screaming Monkeys"
+        When I send a message "Tim Harvey: Do you like Chuck Norris?"
+        Then monkeybot will not respond
