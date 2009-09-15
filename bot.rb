@@ -15,17 +15,26 @@ def fetch_or_create_user(name)
 end
 
 room.listen do |message|
+  user = fetch_or_create_user(message[:person])
+
+  # ======================
+  # = Message operations =
+  # ======================
   
-  # ====================
-  # = Archive messages =
-  # ====================
+  # Archive messages
   unless MESSAGE_EXCEPTIONS.include?(message[:person])
     unless message[:message] == ""
-      user = fetch_or_create_user(message[:person])
       user.messages << Message.new( :message => message[:message], :message_id => message[:id] )
       user.save
     end
   end
+
+  # Auto-back feature
+  if user.status == "away"
+    user.update_attributes( :status => "active" )
+    room.speak message[:person] + " is now back"
+  end
+  
   
   # =========
   # = /sing =
@@ -69,7 +78,6 @@ room.listen do |message|
   # = /away message =
   # =================
   if message[:message] =~ /^\/away(\s(.+))?/
-    user = fetch_or_create_user(message[:person])
     user.status = "away"
     user.status_message = $2 if $2
     if user.save
@@ -87,7 +95,6 @@ room.listen do |message|
   # = /status message =
   # ===================
   if message[:message] =~ /^\/status\s(.+)?/
-    user = fetch_or_create_user(message[:person])
     user.status_message = $1
     if user.save
       room.speak "#{message[:person]} is currently #{user.status}: #{user.status_message}"
@@ -114,7 +121,6 @@ room.listen do |message|
   # = /back message =
   # =================
   if message[:message] =~ /^\/back(\s(.+))?/
-    user = fetch_or_create_user(message[:person])
     user.status = "active"
     user.status_message = $2 ? $2 : ""
     if user.save
