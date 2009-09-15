@@ -264,16 +264,18 @@ room.listen do |message|
     # ================
     # = *COLD FUSION =
     # ================
-    technologies = ["cold fusion", "coldfusion", "CF"]
-    insults = ["antiquated", "lame", "needing Chuck Norris to deal the death blow"]
-    insults += ["FTS!", "needing not be mentioned anymore"]
-    insults += ["..., wait, someone still uses that?", "in my mind stuck in the bucket with COBOL and FORTRAN"]
-    insults += ["on it's death bed", "showing it's age", "dead to me"]
-    insults += ["amateur", "worse than chapped lips when skiing", "relatively enjoyable compared to a vasectomy"]
+    technologies = ["cold fusion", "coldfusion", "CF", "CFM"]
+    insults =  ["is antiquated", "is lame", "is needing Chuck Norris to deal the death blow"]
+    insults += ["is FTS!", "is needing not be mentioned anymore"]
+    insults += ["..., wait, someone still uses that?", "is in my mind stuck in the bucket with COBOL and FORTRAN"]
+    insults += ["is on it's death bed", "is showing it's age", "is dead to me"]
+    insults += ["is amateur", "is worse than chapped lips when skiing", "is relatively enjoyable compared to a vasectomy"]
+    insults += ["isn't that just Java?", "Didn't it create MySpace? Let's not forget that mistake..."]
+    insults += ["Mr. T pities the fool", "Altair, Macromedia, Adobe...who's your daddy?"]
   
     technologies.each do |t|
       if message[:message].downcase.match(t.downcase)
-        room.speak "#{t} is " + insults[rand(insults.size)].to_s
+        room.speak "#{t} " + insults[rand(insults.size)].to_s
       end
     end
 

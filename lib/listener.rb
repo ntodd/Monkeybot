@@ -4,7 +4,7 @@ class Listener
   FUNNY =
     [/\smom\s?/i, "Hey now, no reason to drag someone's mom into this."],
     [/Fort Wayne/i, "Fort Wayne FTW!"],
-    [/gem/i, "Oooooh shiny!!!"]
+    [/\sgem\s/i, "Oooooh shiny!!!"]
     
   # Other categories here?
   
