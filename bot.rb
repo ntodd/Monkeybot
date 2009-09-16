@@ -30,7 +30,7 @@ room.listen do |message|
   end
 
   # Auto-back feature
-  if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/ and message[:message] != "has left the room"
+  if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/ and message[:message] !~ /has left the room/
     user.update_attributes( :status => "active" )
     room.speak message[:person] + " is now back"
   end
@@ -127,7 +127,7 @@ room.listen do |message|
   # ====================
   # = /earmuffs on|off =
   # ====================
-  if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/ and message[:person] != "Dutch R."
+  if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/
     Admin.listeners_active = $1 == "off"
     room.speak "Earmuffs are now #{$1}"
   else if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/ and message[:person] == "Dutch R."
@@ -252,34 +252,15 @@ room.listen do |message|
   # = General Listeners =
   # =====================
   if Admin.listeners_active 			# Controlled with /earmuffs command
-	if message[:person] != "GitHub"		# Disallow GitHub bot interference when people commit
+	  if message[:person] != "GitHub"		# Disallow GitHub bot interference when people commit
 
-	    Listener.all.each do |handler|
-	      if message[:message] =~ Regexp.new(handler[0])
-	        room.speak handler[1]
-	      end
-	    end
-	    
-	    # ================
-	    # = *COLD FUSION =
-	    # ================
-	    technologies = ["cold fusion", "coldfusion", "CF", "CFM", "CFML"]
-	    insults =  ["is antiquated", "is lame", "is needing Chuck Norris to deal the death blow"]
-	    insults += ["is FTS!", "is needing not be mentioned anymore"]
-	    insults += ["..., wait, someone still uses that?", "is in my mind stuck in the bucket with COBOL and FORTRAN"]
-	    insults += ["is on it's death bed", "is showing it's age", "is dead to me"]
-	    insults += ["is amateur", "is worse than chapped lips when skiing", "is relatively enjoyable compared to a vasectomy"]
-	    insults += ["isn't that just Java?", "Didn't it create MySpace? Let's not forget that mistake..."]
-	    insults += ["Mr. T pities the fool", "...who's your dad anyway?? Macromedia or Adobe...?"]
-	    insults += ["is in a MySpace Emo band, \"Tags are Death\"", "- what's a command line?", "- because we can dance with it: http://www.youtube.com/watch?v=uC3T1kUTRYo&feature=related"]
-	  
-	    technologies.each do |t|
-	      if message[:message].downcase.match(t.downcase)
-	        room.speak "#{t} " + insults[rand(insults.size)].to_s
-	      end
-	    end
+  	    Listener.all.each do |handler|
+  	      if message[:message] =~ Regexp.new(handler[0])
+  	        room.speak handler[1]
+  	      end
+  	    end
 
-	end
+  	end
   end
   
 end
