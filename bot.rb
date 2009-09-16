@@ -262,7 +262,7 @@ room.listen do |message|
     # ================
     # = *COLD FUSION =
     # ================
-    technologies = ["cold fusion", "coldfusion", "CF", "CFM"]
+    technologies = ["cold fusion", "coldfusion", "CF", "CFM", "CFML"]
     insults =  ["is antiquated", "is lame", "is needing Chuck Norris to deal the death blow"]
     insults += ["is FTS!", "is needing not be mentioned anymore"]
     insults += ["..., wait, someone still uses that?", "is in my mind stuck in the bucket with COBOL and FORTRAN"]
