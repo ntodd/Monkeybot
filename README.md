@@ -67,7 +67,6 @@ Set yourself away
     /away foo status message
     
 Turn listen responder on/off
-(unless you're Dutch R.)
 	
 	/earmuffs on/off
 	
