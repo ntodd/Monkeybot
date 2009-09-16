@@ -130,6 +130,8 @@ room.listen do |message|
   if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/ and message[:person] != "Dutch R."
     Admin.listeners_active = $1 == "off"
     room.speak "Earmuffs are now #{$1}"
+  else
+    room.speak "I'm afraid I cannot do that Dutch."
   end
   
   # =============
@@ -267,7 +269,8 @@ room.listen do |message|
     insults += ["is on it's death bed", "is showing it's age", "is dead to me"]
     insults += ["is amateur", "is worse than chapped lips when skiing", "is relatively enjoyable compared to a vasectomy"]
     insults += ["isn't that just Java?", "Didn't it create MySpace? Let's not forget that mistake..."]
-    insults += ["Mr. T pities the fool", "Altair, Macromedia, Adobe...who's your daddy?"]
+    insults += ["Mr. T pities the fool", "...who's your dad anyway?? Macromedia or Adobe...?"]
+    insults += ["is in a MySpace Emo band, \"Tags are Death\"", "- what's a command line?", "- because we can dance with it: http://www.youtube.com/watch?v=uC3T1kUTRYo&feature=related"]
   
     technologies.each do |t|
       if message[:message].downcase.match(t.downcase)
