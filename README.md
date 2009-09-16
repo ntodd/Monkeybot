@@ -149,6 +149,16 @@ Deprecated Functionality
     
 To do list
 ===
+* Create a polling feature that could work using the following commands  
+	/poll create foo				creates a new poll  
+	/poll destroy foo				forces destruction of an old poll  
+	/poll foo ends datetime			schedule an ending datetime for specified poll  
+	/poll vote foo yes|no			vote in specified poll  
+	/poll list						lists all current polls by name  
+	/poll status foo				lists votes in specified poll  
+	/poll username					list all polls created by specified user  
+	/poll todo						show all polls you haven't voted in yet
+	/poll help						displays quick list of commands and descriptions
 
 * Extract Kanye West VMA joke photos from here and either paste in the link to follow, or paste in the image itself  
 	http://kanyegate.tumblr.com/random
