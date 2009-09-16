@@ -122,18 +122,18 @@ Get weather report for a zipcode
 General Listeners
 ---
 
-Comment whenever someone mentions the word "GEM"
-* [case-insensitive]
+Comment whenever someone mentions the word "GEM"  
+[case-insensitive]
 
     /speaks the phrase "Oooooh shiny!!!"
 
-Comment whenever someone mentions the word "FORT WAYNE"
-* [case-insensitive]
+Comment whenever someone mentions the word "FORT WAYNE"  
+[case-insensitive]
 
     /speaks the phrase "Fort Wayne FTW!"
     
-Comment whenever someone mentions the word "MOM"
-* [case-insensitive]
+Comment whenever someone mentions the word "MOM"  
+[case-insensitive]
 
     /speaks the phrase "Hey now, no reason to drag someone's mom into this."
     
@@ -154,17 +154,17 @@ To do list
 * Could email some outputs instead of dump to chat
 * Use away messages (Cucumber feature below...or at least my "hack" at it)
 
-    Feature: Away message repeating
+    Feature: Away message repeating  
       In order to not get Hulk angry when someone doesn't respond right away
       As a chat user
       I want monkeybot to repeat someone's away message when I DM them
     
-      Scenario: Messaging a user who is away
+      Scenario: Messaging a user who is away  
         Given a user "Tim Harvey:" who is "/away At a meeting"
         When I send a message "Tim Harvey: Want to do lunch?"
         Then monkeybot will respond "Tim Harvey is away: At a meeting"
       
-      Scenario: Messaging a user who is back
+      Scenario: Messaging a user who is back  
         Given a user "Tim Harvey:" who is "/back Chatting with Screaming Monkeys"
         When I send a message "Tim Harvey: Do you like Chuck Norris?"
         Then monkeybot will not respond
