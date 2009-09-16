@@ -130,8 +130,6 @@ room.listen do |message|
   if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/
     Admin.listeners_active = $1 == "off"
     room.speak "Earmuffs are now #{$1}"
-  else if message[:message] =~ /^\/earmuffs\s(o(n|ff))$/ and message[:person] == "Dutch R."
-    room.speak "I'm afraid I cannot do that Dutch."
   end
   
   # =============
