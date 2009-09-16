@@ -65,14 +65,9 @@ Set yourself away
 
     /away
     /away foo status message
-  
-Set yourself back
-
-    /back
-    /back foo status message
     
 Turn listen responder on/off
-(unless you're Dutch)
+(unless you're Dutch R.)
 	
 	/earmuffs on/off
 	
@@ -141,6 +136,16 @@ Comment whenever someone mentions the word "MOM"
 [case-insensitive]
 
     /speaks the phrase "Hey now, no reason to drag someone's mom into this."
+    
+Deprecated Functionality
+---
+
+Set yourself back
+===This command has been deprecated in favor of automatic status updating.  
+===To set your active status, use the /status command.
+
+    /back
+    /back foo status message
     
 To do list
 ===
