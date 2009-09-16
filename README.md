@@ -150,6 +150,9 @@ Deprecated Functionality
 To do list
 ===
 
+* Extract Kanye West VMA joke photos from here and either paste in the link to follow, or paste in the image itself  
+	http://kanyegate.tumblr.com/random
+
 * Email log of day's messages
 * Could email some outputs instead of dump to chat
 * Use away messages (Cucumber feature below...or at least my "hack" at it)
