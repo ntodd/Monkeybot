@@ -140,9 +140,9 @@ Comment whenever someone mentions the word "MOM"
 Deprecated Functionality
 ---
 
-* Set yourself back
-	This command has been deprecated in favor of automatic status updating. 
-	To set your active status, use the /status command.
+#### Set yourself back
+	* This command has been deprecated in favor of automatic status updating. 
+	* To set your active status, use the /status command.
 
 		    /back
 		    /back foo status message
