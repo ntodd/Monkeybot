@@ -123,29 +123,29 @@ General Listeners
 ---
 
 Comment whenever someone mentions the word "GEM"
-[case-insensitive]
+* [case-insensitive]
 
     /speaks the phrase "Oooooh shiny!!!"
 
 Comment whenever someone mentions the word "FORT WAYNE"
-[case-insensitive]
+* [case-insensitive]
 
     /speaks the phrase "Fort Wayne FTW!"
     
 Comment whenever someone mentions the word "MOM"
-[case-insensitive]
+* [case-insensitive]
 
     /speaks the phrase "Hey now, no reason to drag someone's mom into this."
     
 Deprecated Functionality
 ---
 
-Set yourself back\n
-===This command has been deprecated in favor of automatic status updating.\n  
-===To set your active status, use the /status command.
+	Set yourself back
+		*This command has been deprecated in favor of automatic status updating. 
+		*To set your active status, use the /status command.
 
-    /back
-    /back foo status message
+		    /back
+		    /back foo status message
     
 To do list
 ===
