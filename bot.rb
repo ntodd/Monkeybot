@@ -253,7 +253,7 @@ room.listen do |message|
     f = t + (25 * 60)
     tstamp = t.strftime("%I:%M%p")
     fstamp = f.strftime("%I:%M%p")
-    room.speak "#{user} will be away for 25 minutes"
+    room.speak "#{user.name} will be away for 25 minutes"
     user.update_attributes( :status => "started a pomodoro at #{tstamp} and will be inactive until at least #{stamp}")
   end
   
