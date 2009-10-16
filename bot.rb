@@ -1,3 +1,7 @@
+## TODO: listen to left the room and mark their status as away
+## TODO: listen for /pomodoro and alert users that user is away for 25 minutes, set their status
+## TODO: listen for entered room and set the users status as active
+
 require File.join(File.dirname(__FILE__), 'init' )
 
 campfire = Tinder::Campfire.new ACCOUNT
@@ -30,11 +34,20 @@ room.listen do |message|
   end
 
   # Auto-back feature
-  if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/ and message[:message] !~ /has left the room/
+  if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/
     user.update_attributes( :status => "active" )
     room.speak message[:person] + " is now back"
   end
   
+  # auto-away status
+  if message[:message] =~ /has left the room/
+    user.update_attributes( :status => "away" )
+  end
+  
+  # Auto-active status
+  if message[:message] =~ /has entered the room/
+    user.update_attributes( :status => "active" )
+  end
   
   # =========
   # = /sing =
@@ -232,7 +245,19 @@ room.listen do |message|
     else
       room.speak "Sorry, I can only generate a kick-ass random string if you pass me a valid length"
     end
-  end  
+  end
+  
+  # =============
+  # = /pomodoro =
+  # =============
+  if message[:message] = "/pomodoro"
+    t = Time.now 
+    f = t + (25 * 60)
+    tstamp = t.strftime("%I:%M%p")
+    fstamp = f.strftime("%I:%M%p")
+    room.speak "#{user} will be away for 25 minutes"
+    user.update_attributes( :status => "started a pomodoro at #{tstamp} and will be inactive until at least #{stamp}")
+  end
   
   # ==================
   # = /bitchslap foo =
