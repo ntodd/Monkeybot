@@ -257,13 +257,6 @@ room.listen do |message|
     user.update_attributes( :status_message => "started a pomodoro at #{tstamp.to_s} and will be inactive until at least #{fstamp.to_s}")
   end
   
-  # ==================
-  # = /bitchslap foo =
-  # ==================
-  if message[:message] =~ /^\/bitchslap/
-    room.speak "#{message[:person]} has f$%@^@! bitch slapped Tim Novinger" 
-  end
-  
   # ===============
   # = /shutup foo =
   # ===============
