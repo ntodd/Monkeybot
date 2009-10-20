@@ -1,7 +1,3 @@
-## TODO: listen to left the room and mark their status as away
-## TODO: listen for /pomodoro and alert users that user is away for 25 minutes, set their status
-## TODO: listen for entered room and set the users status as active
-
 require File.join(File.dirname(__FILE__), 'init' )
 
 campfire = Tinder::Campfire.new ACCOUNT
@@ -34,8 +30,8 @@ room.listen do |message|
   end
 
   # Auto-back feature
-  if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/ and message[:message] !~ /has left the room/
-    user.update_attributes( :status => "active" )
+  if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/
+    user.update_attributes( :status => "active" ) unless message[:message] =~ /has left the room/
   end
   
   # auto-away status
