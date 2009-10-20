@@ -243,7 +243,7 @@ room.listen do |message|
   # =============
   # = /pomodoro =
   # =============
-  if message[:message] =~ "/^\/pomodoro\s(.+)?/"
+  if message[:message] =~ /^\/pomodoro\s(.+)?/
     t = Time.now 
     f = t + (25 * 60)
     tstamp = t.strftime("%I:%M%p")
