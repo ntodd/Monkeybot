@@ -36,7 +36,6 @@ room.listen do |message|
   # Auto-back feature
   if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/ and message[:message] !~ /has left the room/
     user.update_attributes( :status => "active" )
-    #room.speak message[:person] + " is now back"
   end
   
   # auto-away status
