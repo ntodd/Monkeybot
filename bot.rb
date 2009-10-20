@@ -34,9 +34,9 @@ room.listen do |message|
   end
 
   # Auto-back feature
-  if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/
+  if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/ and message[:message] !~ /has left the room/
     user.update_attributes( :status => "active" )
-    room.speak message[:person] + " is now back"
+    #room.speak message[:person] + " is now back"
   end
   
   # auto-away status
@@ -248,7 +248,7 @@ room.listen do |message|
   # =============
   # = /pomodoro =
   # =============
-  if message[:message] == "/pomodoro"
+  if message[:message] =~ "/^\/pomodoro\s(.+)?/"
     t = Time.now 
     f = t + (25 * 60)
     tstamp = t.strftime("%I:%M%p")
