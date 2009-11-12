@@ -272,7 +272,11 @@ room.listen do |message|
   	    end
 
   	end
-
   end
+  
+  if message[:message] == "/katz"
+    room.upload "files/yehuda-katz.jpg"
+  end
+  
   
 end
