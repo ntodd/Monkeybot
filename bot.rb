@@ -200,6 +200,14 @@ room.listen do |message|
   end
 
 
+  # =========
+  # = /katz =
+  # =========
+  if message[:message] == "/katz"
+    room.upload "files/yehuda-katz.jpg"
+  end
+
+
   # =================
   # = /slap Nate T. =
   # =================
