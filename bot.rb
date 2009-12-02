@@ -29,20 +29,24 @@ room.listen do |message|
     end
   end
 
+
   # Auto-back feature
   if user.status == "away" and message[:message] !~ /^\/away(\s(.+))?/ and message[:message] !~ /has left the room/
     user.update_attributes( :status => "active" )
   end
+  
   
   # auto-away status
   if message[:message] =~ /has left the room/
     user.update_attributes( :status => "away" )
   end
   
+  
   # Auto-active status
   if message[:message] =~ /has entered the room/
     user.update_attributes( :status => "active" )
   end
+  
   
   # =========
   # = /sing =
@@ -50,6 +54,7 @@ room.listen do |message|
   if message[:message] == "/sing"
     room.speak "Binary Solo! 0000001 00000011 000000111 000001111 http://www.youtube.com/watch?v=B1BdQcJ2ZYY"
   end
+  
   
   # =========================
   # = /search search string =
@@ -68,6 +73,7 @@ room.listen do |message|
     end
   end
   
+  
   # =====================
   # = /topic room topic =
   # =====================
@@ -75,12 +81,14 @@ room.listen do |message|
     room.topic = $1
   end
 
+
   # ========================
   # = /toggle guest access =
   # ========================
   if message[:message] == "/toggle guest access"
     room.toggle_guest_access
   end
+  
   
   # =================
   # = /away message =
@@ -99,6 +107,7 @@ room.listen do |message|
     end  
   end
   
+  
   # ===================
   # = /status message =
   # ===================
@@ -110,6 +119,7 @@ room.listen do |message|
       room.speak "Oops, problem."
     end  
   end
+  
   
   # ===========
   # = /status =
@@ -125,12 +135,14 @@ room.listen do |message|
     room.paste ret
   end
 
+
   # =================
   # = /back message =
   # =================
   if message[:message] =~ /^\/back(\s(.+))?/
     room.speak "This command has been deprecated in favor of automatic status updating.  To set your active status, use /status instead."
   end
+  
   
   # ====================
   # = /earmuffs on|off =
@@ -140,12 +152,14 @@ room.listen do |message|
     room.speak "Earmuffs are now #{$1}"
   end
   
+  
   # =============
   # = /earmuffs =
   # =============
   if message[:message] =~ /^\/earmuffs$/
     room.speak "Earmuffs are currently #{Admin.listeners_active ? "off" : "on"}"
   end
+  
   
   # =========
   # = /joke =
@@ -159,12 +173,6 @@ room.listen do |message|
     room.speak results[0][:joke_text]
   end
   
-  # =================
-  # = /slap Nate T. =
-  # =================
-  if message[:message] =~ /^\/slap(\s(.+))?/
-    room.speak "#{message[:person]} slaps #{$2} around with a large trout."
-  end
   
   # ==========
   # = /chuck =
@@ -178,6 +186,7 @@ room.listen do |message|
     room.speak results[0][:joke_text]
   end
   
+  
   # ==========
   # = /mrt =
   # ==========
@@ -189,6 +198,27 @@ room.listen do |message|
     results = joke.to_hash
     room.speak results[0][:joke_text]
   end
+
+
+  # =================
+  # = /slap Nate T. =
+  # =================
+  if message[:message] =~ /^\/slap(\s(.+))?/
+    if User.exists?(:name => $1)
+      user = User.find_by_name($1)
+      room.speak "#{message[:person]} slaps #{$1} around with a large trout."
+    else
+      room.speak "Pssshh! Hey buddy...just a hint, but #{$1} isn't here right now."
+    end
+  end
+
+  # ===============
+  # = /shutup foo =
+  # ===============
+  if message[:message] =~ /^\/shutup\s(.+)?/
+    room.speak "OH SNAP #{$1}! You just got BOOM ROASTED."
+  end
+  
   
   # ====================
   # = /finger Nate T. =
@@ -208,6 +238,7 @@ room.listen do |message|
     end
   end
   
+  
   # ==================
   # = /weather 46845 =
   # ==================
@@ -226,6 +257,7 @@ room.listen do |message|
     end
   end
   
+  
   # =============
   # = /random 8 =
   # =============
@@ -240,6 +272,7 @@ room.listen do |message|
     end
   end
   
+  
   # =============
   # = /pomodoro =
   # =============
@@ -252,31 +285,17 @@ room.listen do |message|
     user.update_attributes( :status_message => "started a pomodoro at #{tstamp.to_s} and will be inactive until at least #{fstamp.to_s}")
   end
   
-  # ===============
-  # = /shutup foo =
-  # ===============
-  if message[:message] =~ /^\/shutup\s(.+)?/
-    room.speak "OH SNAP #{$1}! You just got BOOM ROASTED."
-  end
-  
   # =====================
   # = General Listeners =
   # =====================
-  if Admin.listeners_active 			# Controlled with /earmuffs command
-	  if message[:person] != "GitHub"		# Disallow GitHub bot interference when people commit
-
-  	    Listener.all.each do |handler|
-  	      if message[:message] =~ Regexp.new(handler[0])
-  	        room.speak handler[1]
-  	      end
+  if Admin.listeners_active 		    	  # Controlled with /earmuffs command
+	  if message[:person] != "GitHub"		  # Disallow GitHub bot interference when people commit
+  	  Listener.all.each do |handler|
+  	    if message[:message] =~ Regexp.new(handler[0])
+  	      room.speak handler[1]
   	    end
-
-  	end
+  	  end
+    end
   end
-  
-  if message[:message] == "/katz"
-    room.upload "files/yehuda-katz.jpg"
-  end
-  
   
 end
