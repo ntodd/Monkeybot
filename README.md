@@ -105,6 +105,10 @@ Slap a user (or anything)
 Bitchslap Tim Novinger regardless of target user
 
     /bitchslap foo
+
+Displays a photo of Yehuda Katz because he's just that awesome
+
+	/katz
     
 Respond to someone telling someone else to shut up
     
