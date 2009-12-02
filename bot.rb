@@ -259,6 +259,14 @@ room.listen do |message|
     room.speak "OH SNAP #{$1}! You just got BOOM ROASTED."
   end
   
+  # ==============
+  # = /katz
+  # ==============
+  if message[:message] =~ /^\/katz/
+    #room.speak Dir.getwd.to_s
+    room.upload "/Users/mike/Documents/monkeybot/Monkeybot/files/yehuda-katz.jpg"
+  end
+  
   # =====================
   # = General Listeners =
   # =====================
@@ -273,10 +281,4 @@ room.listen do |message|
 
   	end
   end
-  
-  if message[:message] == "/katz"
-    room.upload "files/yehuda-katz.jpg"
-  end
-  
-  
 end
