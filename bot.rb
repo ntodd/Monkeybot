@@ -1,3 +1,6 @@
+# TODO: add timestamps each time the status_message is changed
+# TODO: add some tabbing to status output for better readability
+
 require File.join(File.dirname(__FILE__), 'init' )
 
 campfire = Tinder::Campfire.new ACCOUNT
