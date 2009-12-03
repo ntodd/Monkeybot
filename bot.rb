@@ -291,22 +291,23 @@ room.listen do |message|
   # ===============
   # = /shutup foo =
   # ===============
-  if message[:message] =~ /^\/shutup\s(.+)?/
-    room.speak "OH SNAP #{$1}! You just got BOOM ROASTED."
-  end
+  # if message[:message] =~ /^\/shutup\s(.+)?/
+  #     room.speak "OH SNAP #{$1}! You just got BOOM ROASTED."
+  #   end
   
   # ==============
   # = /katz
   # ==============
   if message[:message] == "/katz"
-    room.upload "files/yehuda-katz.jpg"
+    room.speak "here he is:"
+    room.upload "/Users/mike/Documents/monkeybot/Monkeybot/files/yehuda-katz.jpg"
   end
   
   # ==============
   # = /debug
   # ==============
   if message[:message] == "/debug"
-    room.speak "current Dir: #{Dir.pwd}"
+    room.speak "current Dir: #{Dir.pwd.to_s}"
   end
   
   # =====================
