@@ -298,9 +298,15 @@ room.listen do |message|
   # ==============
   # = /katz
   # ==============
-  if message[:message] =~ /^\/katz/
-    #room.speak Dir.getwd.to_s
-    room.upload "/Users/mike/Documents/monkeybot/Monkeybot/files/yehuda-katz.jpg"
+  if message[:message] == "/katz"
+    room.upload "files/yehuda-katz.jpg"
+  end
+  
+  # ==============
+  # = /debug
+  # ==============
+  if message[:message] == "/debug"
+    room.speak "current Dir: #{Dir.pwd}"
   end
   
   # =====================
