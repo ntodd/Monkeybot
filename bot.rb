@@ -41,7 +41,7 @@ room.listen do |message|
   
   # auto-away status
   if message[:message] =~ /has left the room/
-    user.update_attributes( :status => "away" )
+    user.update_attributes( :status => "away", :status_message => "" )
   end
   
   
@@ -203,14 +203,6 @@ room.listen do |message|
   end
 
 
-  # =========
-  # = /katz =
-  # =========
-  if message[:message] == "/katz"
-    room.upload "files/yehuda-katz.jpg"
-  end
-
-
   # =================
   # = /slap Nate T. =
   # =================
@@ -315,6 +307,7 @@ room.listen do |message|
   # = General Listeners =
   # =====================
   if Admin.listeners_active 		    	  # Controlled with /earmuffs command
+	  
 	  if message[:person] != "GitHub"		  # Disallow GitHub bot interference when people commit
   	  Listener.all.each do |handler|
   	    if message[:message] =~ Regexp.new(handler[0])
@@ -322,5 +315,7 @@ room.listen do |message|
   	    end
   	  end
   	end
+  	
   end
+  
 end
