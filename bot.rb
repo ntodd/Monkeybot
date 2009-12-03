@@ -209,7 +209,11 @@ room.listen do |message|
   if message[:message] =~ /^\/slap(\s(.+))?/
     if User.exists?(:name => $1)
       user = User.find_by_name($1)
-      room.speak "#{message[:person]} slaps #{$1} around with a large trout."
+      if user = "Monkeybot"
+          room.speak "I've been a bawdy little monkey....sorry guys."
+      else
+          room.speak "#{message[:person]} slaps #{$1} around with a large trout."
+      end
     else
       room.speak "Pssshh! Hey buddy...just a hint, but #{$1} isn't here right now."
     end
