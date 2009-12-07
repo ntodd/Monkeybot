@@ -1,4 +1,7 @@
 db/*.sqlite3
+db/monkeybot
 config/database.yml
 log/*
 config/private_details.rb
+.DS_Store
+bot.rb.pid

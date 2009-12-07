@@ -17,9 +17,12 @@ def fetch_or_create_user(name)
   user
 end
 
+
+
 room.listen do |message|
   user = fetch_or_create_user(message[:person])
-
+  puts "#{user[:name]}: #{message[:message]}"
+  
   # ======================
   # = Message operations =
   # ======================
@@ -207,11 +210,13 @@ room.listen do |message|
   # = /slap Nate T. =
   # =================
   if message[:message] =~ /^\/slap(\s(.+))?/
-    if User.exists?(:name => $1)
-      user = User.find_by_name($1)
-      room.speak "#{message[:person]} slaps #{$1} around with a large trout."
+    name = $1.strip
+    names = []
+    room.users.each { |u| names.push(u.to_s.gsub!("<span class=\"name\">", "").gsub!("</span>", "").strip)}
+    if names.include? name
+      room.speak "#{message[:person]} slaps #{name} around with a large trout."
     else
-      room.speak "Pssshh! Hey buddy...just a hint, but #{$1} isn't here right now."
+      room.speak "Pssshh! Hey buddy...just a hint, but #{name} isn't here right now."
     end
   end
 
@@ -291,16 +296,16 @@ room.listen do |message|
   # ===============
   # = /shutup foo =
   # ===============
-  # if message[:message] =~ /^\/shutup\s(.+)?/
-  #     room.speak "OH SNAP #{$1}! You just got BOOM ROASTED."
-  #   end
+  if message[:message] =~ /^\/shutup\s(.+)?/
+    room.speak "OH SNAP #{$1}! You just got BOOM ROASTED."
+  end
   
   # ==============
   # = /katz
   # ==============
   if message[:message] == "/katz"
-    room.speak "here he is:"
-    room.upload "/Users/mike/Documents/monkeybot/Monkeybot/files/yehuda-katz.jpg"
+    puts "exists: " + File.exists?(File.join(File.dirname(__FILE__), 'files', 'yehuda-katz.jpg' )).to_s
+    puts room.upload File.join(File.dirname(__FILE__), 'files', 'yehuda-katz.jpg' )
   end
   
   # ==============
@@ -308,6 +313,10 @@ room.listen do |message|
   # ==============
   if message[:message] == "/debug"
     room.speak "current Dir: #{Dir.pwd.to_s}"
+    room.speak "current users: "
+    room.users.each do |user|
+      room.speak "- #{user.to_s.gsub!("<span class=\"name\">", "").gsub!("</span>", "")}"
+    end
   end
   
   # =====================
