@@ -21,7 +21,6 @@ end
 
 room.listen do |message|
   user = fetch_or_create_user(message[:person])
-  puts "#{user[:name]}: #{message[:message]}"
   
   # ======================
   # = Message operations =
@@ -304,8 +303,7 @@ room.listen do |message|
   # = /katz
   # ==============
   if message[:message] == "/katz"
-    puts "exists: " + File.exists?(File.join(File.dirname(__FILE__), 'files', 'yehuda-katz.jpg' )).to_s
-    puts room.upload File.join(File.dirname(__FILE__), 'files', 'yehuda-katz.jpg' )
+    room.upload File.join(File.dirname(__FILE__), 'files', 'yehuda-katz.jpg' )
   end
   
   # ==============
