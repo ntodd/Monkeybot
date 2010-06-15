@@ -1,4 +1,4 @@
-%w( rubygems tinder scrubyt activerecord yahoo-weather sha1 ).each {|lib| require lib }
+%w( rubygems tinder scrubyt active_record yahoo-weather sha1 ).each {|lib| require lib }
 require File.join(File.dirname(__FILE__), 'config', 'environment' )
 require File.join(File.dirname(__FILE__), 'config', 'private_details' )
 
